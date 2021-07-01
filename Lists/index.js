@@ -1,3 +1,11 @@
+const fs = require("fs")
+const readline = require("readline")
+
+const r1 = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+})
+
 /**
  *  List Class
  */
@@ -105,11 +113,11 @@ function contains(element) {
 }
 
 function front() {
-  this.pos = 0;
+  return this.pos = 0;
 }
 
 function end() {
-  this.pos = this.listSize-1;
+  return this.pos = this.listSize-1;
 }
 
 function prev() {
@@ -136,15 +144,6 @@ function getElement() {
   return this.dataStore[this.pos]
 }
 
-//////////// EXAMPLE ///////////////////
-
-const fs = require("fs")
-
-function Customer(name, movie) {
-  this.name = name;
-  this.movie = movie;
-}
-
 function createArr(file) {
   var arr = fs.readFileSync(file, 'utf-8').split('\n');
   for(var i=0; i<arr.length; i++) {
@@ -163,6 +162,18 @@ function displayList(list) {
     }
   }
 }
+///////////////////////////////
+
+function Customer(name, movie) {
+  this.name = name;
+  this.movie = movie;
+}
+
+function Person(name, age, gender) {
+  this.name   = name;
+  this.age    = age;
+  this.gender = gender;
+}
 
 function checkOut(name, movie, movieList, customerList) {
   if(movieList.contains(movie)) {
@@ -174,14 +185,19 @@ function checkOut(name, movie, movieList, customerList) {
   }
 }
 
-
-var movies    = createArr('./films.txt')
-var movieList = new List()
-var customerList = new List()
-
-for(var i=0; i<movies.length; i++) {
-  movieList.append(movies[i]);
+function onlyManShow(list) {
+  for(var i=0; i < list.length(); i++) {
+    if(list.getElement().gender == 'K') {
+      console.log(list.getElement());
+    }
+    list.next();
+  }
 }
 
-displayList(movieList)
-checkOut('jane doe', 'The Godfather', movieList, customerList)
+var personList = new List();
+personList.append(new Person("Mert", 21, "E"))
+personList.append(new Person("Onur", 17, "E"))
+personList.append(new Person("Buket", 15, "K"))
+personList.append(new Person("Cemre", 35, "K"))
+
+onlyManShow(personList)
