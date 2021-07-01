@@ -1,3 +1,3 @@
 <p>
-    <img src='./Book-Info/book.png'/>
+    <img src='./book.png'/>
 </p>
