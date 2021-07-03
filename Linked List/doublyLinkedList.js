@@ -1,3 +1,17 @@
+/**
+ *     _________________
+ *     |        |       |  
+ *     |        | Next  |---------> Next Data
+ *     |  Data  |_______|
+ *     |        |       |
+ *     |        | Prev  |_____
+ *     |________|_______|     \
+ *                            |
+ *        Prev Data <---------/
+ *
+*/                            
+
+
 function Node(element) {
     this.element = element;
     this.next = null;
