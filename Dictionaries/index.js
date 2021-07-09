@@ -24,7 +24,7 @@ function remove(key) {
 }
 
 function showAll() {
-    for(var key in this.dataStore.sort()) { // for(var key in Object.keys(this.dataStore))
+    for(var key of Object.keys(this.dataStore).sort()) { // for(var key in Object.keys(this.dataStore))
         console.log(`${key} : ${this.dataStore[key]}`)
     }
 }
